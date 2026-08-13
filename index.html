@@ -110,7 +110,91 @@ footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
 }
 
 .music-control{position:fixed;right:18px;bottom:18px;z-index:50;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(255,250,247,.94);color:var(--rose);box-shadow:0 8px 25px rgba(90,60,60,.16);cursor:pointer;font-size:18px}.music-control.playing{background:var(--rose);color:#fff}
+
+/* Minimal edit: aesthetic background + floating line-by-line names */
+.aesthetic-simple-hero{
+  width:100%;
+  max-width:none;
+  min-height:100svh;
+  padding:0;
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  background:#f7ebe3;
+}
+.simple-hero-bg{
+  width:min(100%,720px);
+  min-height:100svh;
+  background:url("hero-background-clean.png") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.simple-hero-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,247,241,.10);
+  pointer-events:none;
+}
+.simple-hero-content{
+  position:relative;
+  z-index:1;
+  width:100%;
+  padding:70px 22px 80px;
+  box-sizing:border-box;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#744139;
+}
+.simple-kicker,.simple-line,.simple-forever{
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:.20em;
+  line-height:1.8;
+  margin:0;
+}
+.simple-kicker{font-size:13px}
+.simple-line{font-size:13px}
+.simple-forever{
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:.28em;
+}
+.simple-couple{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.floating-name{
+  font-family:"Great Vibes","Allura","Brush Script MT",cursive;
+  font-size:clamp(70px,17vw,110px);
+  line-height:.9;
+  color:#713a32;
+  font-weight:400;
+  letter-spacing:.01em;
+  text-shadow:0 2px 12px rgba(116,65,55,.10);
+}
+.floating-amp{
+  font-family:"Great Vibes","Allura","Brush Script MT",cursive;
+  font-size:clamp(38px,9vw,58px);
+  line-height:1;
+  margin:14px 0;
+  color:#a96c5c;
+}
+@media(max-width:600px){
+  .simple-hero-bg{width:100%}
+  .simple-hero-content{padding:64px 18px 70px}
+  .floating-name{font-size:clamp(66px,20vw,92px)}
+}
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -130,13 +214,20 @@ footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
 
 <audio id="weddingMusic" loop preload="metadata"><source src="wedding-music.mp3" type="audio/mpeg"></audio><button id="musicBtn" class="music-control" type="button" aria-label="Play music" title="Play / pause music">♫</button>
 <main id="site">
-  <section class="hero">
-    <div class="monogram">F &nbsp;·&nbsp; J</div>
-    <div class="small">Together with their families</div>
-    <h1>Farsana <span class="amp">&amp;</span><br>Jabin</h1>
-    <div class="date">23 August 2026</div>
-    <div class="divider"></div>
-    <p class="quote">“A new story beginning here, together forever.”</p>
+  <section class="hero aesthetic-simple-hero" aria-label="Farsana and Jabin wedding invitation">
+    <div class="simple-hero-bg">
+      <div class="simple-hero-content">
+        <div class="simple-kicker">YOU ARE INVITED</div>
+        <div class="simple-line">TO THE BEGINNING OF OUR</div>
+        <div class="simple-forever">FOREVER</div>
+
+        <div class="simple-couple">
+          <div class="floating-name">Farsana</div>
+          <div class="floating-amp">&amp;</div>
+          <div class="floating-name">Jabin</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
