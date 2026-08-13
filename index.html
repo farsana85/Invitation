@@ -108,6 +108,8 @@ footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
   .timebox b{font-size:24px}
   .gallery{grid-template-columns:1fr 1fr}
 }
+
+.music-control{position:fixed;right:18px;bottom:18px;z-index:50;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(255,250,247,.94);color:var(--rose);box-shadow:0 8px 25px rgba(90,60,60,.16);cursor:pointer;font-size:18px}.music-control.playing{background:var(--rose);color:#fff}
 </style>
 </head>
 <body>
@@ -125,6 +127,8 @@ footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
   </div>
 </div>
 
+
+<audio id="weddingMusic" loop preload="metadata"><source src="wedding-music.mp3" type="audio/mpeg"></audio><button id="musicBtn" class="music-control" type="button" aria-label="Play music" title="Play / pause music">♫</button>
 <main id="site">
   <section class="hero">
     <div class="monogram">F &nbsp;·&nbsp; J</div>
@@ -155,22 +159,6 @@ footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
       <h2>Venue</h2>
       <p><strong>VP Auditorium</strong><br>Kuttipara, Manjeri</p>
       <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&query=VP+Auditorium+Kuttipara+Manjeri" target="_blank" rel="noopener">Get Directions</a>
-    </div>
-  </section>
-
-  <section>
-    <div class="card">
-      <div class="small">A glimpse of us</div>
-      <h2>Moments</h2>
-      <p>Add your favourite photographs here.</p>
-      <div class="gallery">
-        <div class="photo">Photo 01</div>
-        <div class="photo">Photo 02</div>
-        <div class="photo">Photo 03</div>
-        <div class="photo">Photo 04</div>
-        <div class="photo">Photo 05</div>
-        <div class="photo">Photo 06</div>
-      </div>
     </div>
   </section>
 
@@ -211,7 +199,18 @@ function openInvite(){
   document.getElementById('opening').style.display='none';
   document.getElementById('site').style.display='block';
   window.scrollTo(0,0);
+  startMusic();
 }
+const music=document.getElementById('weddingMusic');
+const musicBtn=document.getElementById('musicBtn');
+function updateMusicButton(){
+  if(music.paused){musicBtn.textContent='♫';musicBtn.classList.remove('playing');}
+  else{musicBtn.textContent='Ⅱ';musicBtn.classList.add('playing');}
+}
+function startMusic(){music.play().then(updateMusicButton).catch(updateMusicButton);}
+musicBtn.addEventListener('click',()=>{if(music.paused)startMusic();else{music.pause();updateMusicButton();}});
+music.addEventListener('play',updateMusicButton);
+music.addEventListener('pause',updateMusicButton);
 const weddingDate = new Date("2026-08-23T10:30:00+05:30").getTime();
 function updateCountdown(){
   const now = Date.now(), diff = weddingDate-now;
