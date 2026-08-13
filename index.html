@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farsana & Jabin | Wedding Invitation</title>
+<meta name="description" content="Farsana & Jabin — 23 August 2026">
+<style>
+:root{
+  --rose:#9b6d72;
+  --deep:#765257;
+  --cream:#f8f1ec;
+  --paper:#fffaf7;
+  --ink:#4d4040;
+  --muted:#8b7777;
+  --line:#dfceca;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+}
+button,input,textarea{font:inherit}
+.screen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:28px 20px;position:relative;overflow:hidden;
+}
+#opening{background:radial-gradient(circle at 50% 20%,#fffaf7 0,#f7eeea 45%,#eadbd7 100%)}
+.opening-card{text-align:center;max-width:520px;width:100%}
+.small{letter-spacing:.28em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.envelope{
+  width:min(88vw,390px);height:245px;margin:34px auto 28px;
+  position:relative;cursor:pointer;filter:drop-shadow(0 18px 28px rgba(90,60,60,.16));
+}
+.env-body{position:absolute;inset:0;background:#fdf8f4;border:1px solid #dcc8c3;border-radius:4px}
+.env-left,.env-right{
+  position:absolute;top:0;width:0;height:0;border-top:122px solid transparent;
+  border-bottom:123px solid transparent;z-index:2;
+}
+.env-left{left:0;border-right:195px solid #ead7d2}
+.env-right{right:0;border-left:195px solid #ead7d2}
+.env-bottom{
+  position:absolute;left:0;bottom:0;width:0;height:0;border-left:195px solid transparent;
+  border-right:195px solid transparent;border-bottom:135px solid #f1dfda;z-index:3;
+}
+.flap{
+  position:absolute;left:0;top:0;width:0;height:0;
+  border-left:195px solid transparent;border-right:195px solid transparent;
+  border-top:145px solid #f8e8e3;z-index:4;transform-origin:top center;
+  transition:transform .8s ease;
+}
+.seal{
+  position:absolute;left:50%;top:112px;transform:translate(-50%,-50%);
+  width:64px;height:64px;border-radius:50%;background:var(--rose);color:white;
+  display:flex;align-items:center;justify-content:center;z-index:5;
+  font-size:21px;letter-spacing:-1px;border:4px solid #f8e8e3;
+}
+.envelope:hover .flap{transform:rotateX(35deg)}
+.open-btn{
+  border:1px solid var(--rose);background:transparent;color:var(--deep);
+  padding:12px 26px;letter-spacing:.18em;text-transform:uppercase;font-size:11px;
+  cursor:pointer;
+}
+#site{display:none}
+section{padding:82px 22px;max-width:920px;margin:auto}
+.hero{text-align:center;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.monogram{font-size:22px;letter-spacing:.18em;color:var(--rose);margin-bottom:28px}
+.hero h1{font-size:clamp(52px,12vw,100px);font-weight:400;line-height:.9;margin:0;color:var(--deep)}
+.amp{font-size:.55em;font-style:italic;color:var(--rose)}
+.hero .date{margin-top:32px;letter-spacing:.25em;text-transform:uppercase;font-size:13px}
+.quote{max-width:550px;margin:42px auto 0;color:var(--muted);font-style:italic;line-height:1.8}
+.divider{width:48px;height:1px;background:var(--rose);margin:32px auto}
+.card{
+  background:rgba(255,250,247,.78);border:1px solid var(--line);
+  padding:40px 26px;text-align:center;box-shadow:0 16px 45px rgba(90,60,60,.07);
+}
+h2{font-size:34px;font-weight:400;color:var(--deep);margin:12px 0 18px}
+p{line-height:1.8}
+.details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
+.detail{padding:24px 14px;border-top:1px solid var(--line)}
+.detail strong{display:block;color:var(--rose);letter-spacing:.12em;text-transform:uppercase;font-size:11px;margin-bottom:9px}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+.timebox{padding:18px 6px;border:1px solid var(--line);background:#fffaf7}
+.timebox b{font-size:30px;font-weight:400;color:var(--deep);display:block}
+.timebox span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.mapbtn,.submit{
+  display:inline-block;margin-top:24px;padding:12px 25px;background:var(--rose);
+  color:#fff;text-decoration:none;border:0;cursor:pointer;letter-spacing:.12em;text-transform:uppercase;font-size:10px;
+}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}
+.photo{
+  aspect-ratio:1/1;background:linear-gradient(145deg,#ead8d3,#f8eeea);
+  display:flex;align-items:center;justify-content:center;color:#9b8585;
+  border:1px solid var(--line);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+}
+.photo img{width:100%;height:100%;object-fit:cover}
+.rsvp form{max-width:520px;margin:25px auto 0;text-align:left}
+label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:18px 0 7px}
+input,textarea,select{
+  width:100%;padding:13px 12px;background:#fffaf7;border:1px solid var(--line);outline:none;color:var(--ink)
+}
+textarea{min-height:100px;resize:vertical}
+footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
+@media(max-width:600px){
+  .details-grid{grid-template-columns:1fr}
+  .countdown{gap:6px}
+  .timebox b{font-size:24px}
+  .gallery{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="opening" class="screen">
+  <div class="opening-card">
+    <div class="small">A little invitation for you</div>
+    <div class="envelope" onclick="openInvite()" aria-label="Open invitation">
+      <div class="env-body"></div><div class="env-left"></div><div class="env-right"></div>
+      <div class="env-bottom"></div><div class="flap"></div>
+      <div class="seal">F&nbsp;&amp;&nbsp;J</div>
+    </div>
+    <div class="small">Tap the envelope to open</div>
+    <button class="open-btn" onclick="openInvite()">Open Invitation</button>
+  </div>
+</div>
+
+<main id="site">
+  <section class="hero">
+    <div class="monogram">F &nbsp;·&nbsp; J</div>
+    <div class="small">Together with their families</div>
+    <h1>Farsana <span class="amp">&amp;</span><br>Jabin</h1>
+    <div class="date">23 August 2026</div>
+    <div class="divider"></div>
+    <p class="quote">“A new story beginning here, together forever.”</p>
+  </section>
+
+  <section>
+    <div class="card">
+      <div class="small">Save the date</div>
+      <h2>Our Day</h2>
+      <p>We would be delighted to have you with us as we begin this beautiful new chapter.</p>
+      <div class="countdown" aria-label="Countdown">
+        <div class="timebox"><b id="days">0</b><span>Days</span></div>
+        <div class="timebox"><b id="hours">0</b><span>Hours</span></div>
+        <div class="timebox"><b id="minutes">0</b><span>Minutes</span></div>
+        <div class="timebox"><b id="seconds">0</b><span>Seconds</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <div class="small">The celebration</div>
+      <h2>Venue</h2>
+      <p><strong>VP Auditorium</strong><br>Kuttipara, Manjeri</p>
+      <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&query=VP+Auditorium+Kuttipara+Manjeri" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <div class="small">A glimpse of us</div>
+      <h2>Moments</h2>
+      <p>Add your favourite photographs here.</p>
+      <div class="gallery">
+        <div class="photo">Photo 01</div>
+        <div class="photo">Photo 02</div>
+        <div class="photo">Photo 03</div>
+        <div class="photo">Photo 04</div>
+        <div class="photo">Photo 05</div>
+        <div class="photo">Photo 06</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rsvp">
+    <div class="card">
+      <div class="small">Kindly respond</div>
+      <h2>RSVP</h2>
+      <p>We would love to know if you can join us.</p>
+      <form id="rsvpForm">
+        <label for="name">Your name</label>
+        <input id="name" required placeholder="Enter your name">
+        <label for="attendance">Will you be joining us?</label>
+        <select id="attendance" required>
+          <option value="">Please select</option>
+          <option>Joyfully attending</option>
+          <option>Sorry, can't attend</option>
+        </select>
+        <label for="guests">Number of guests</label>
+        <input id="guests" type="number" min="1" value="1" required>
+        <label for="message">A little message (optional)</label>
+        <textarea id="message" placeholder="Leave a message for Farsana & Jabin"></textarea>
+        <button class="submit" type="submit">Send RSVP</button>
+      </form>
+      <p id="rsvpNote" style="display:none;color:var(--rose);margin-top:22px">
+        Thank you! Your RSVP details are ready to be sent.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="monogram">F &nbsp;·&nbsp; J</div>
+    <div class="small">With love, Farsana &amp; Jabin</div>
+  </footer>
+</main>
+
+<script>
+function openInvite(){
+  document.getElementById('opening').style.display='none';
+  document.getElementById('site').style.display='block';
+  window.scrollTo(0,0);
+}
+const weddingDate = new Date("2026-08-23T10:30:00+05:30").getTime();
+function updateCountdown(){
+  const now = Date.now(), diff = weddingDate-now;
+  const vals = diff > 0 ? [
+    Math.floor(diff/86400000),
+    Math.floor(diff%86400000/3600000),
+    Math.floor(diff%3600000/60000),
+    Math.floor(diff%60000/1000)
+  ] : [0,0,0,0];
+  ['days','hours','minutes','seconds'].forEach((id,i)=>document.getElementById(id).textContent=vals[i]);
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+
+document.getElementById('rsvpForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('rsvpNote').style.display='block';
+  // To actually collect RSVPs, connect this form to a free form service
+  // or Google Apps Script before publishing.
+});
+</script>
+</body>
+</html>
