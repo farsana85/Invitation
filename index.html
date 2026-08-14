@@ -195,50 +195,42 @@ footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
 
 
 
-/* Soft blended floral treatment inspired by the first page */
-body{
-  background:#f7ebe3;
+
+/* Final background: same soft floral aesthetic throughout, without the washed-out overlay */
+#site{
+  background:#f7ebe3 url("hero-background-clean.png") center top / cover fixed no-repeat;
 }
-main{
-  position:relative;
-  background:
-    linear-gradient(rgba(250,242,237,.24),rgba(250,242,237,.24)),
-    url("hero-background-clean.png") center top / cover fixed no-repeat;
+#site > section{
+  background:transparent !important;
 }
-main > section{
-  background:
-    linear-gradient(rgba(250,242,237,.18),rgba(250,242,237,.18)),
-    url("hero-background-clean.png") center top / cover no-repeat;
-  background-attachment:fixed;
+#site .card{
+  background:rgba(255,250,247,.72);
+  backdrop-filter:blur(1.5px);
+  -webkit-backdrop-filter:blur(1.5px);
+  border-color:rgba(154,108,100,.16);
 }
-main > section + section{
-  background-position:center center;
-}
-.card{
-  background:rgba(255,250,247,.70);
-  backdrop-filter:blur(2px);
-  -webkit-backdrop-filter:blur(2px);
-  border-color:rgba(154,108,100,.14);
+@media(max-width:700px){
+  #site{
+    background:#f7ebe3 url("hero-background-clean.png") center top / auto 100vh repeat-y;
+    background-attachment:scroll;
+  }
 }
 
 
-.event-date-near-countdown{
+.countdown-date{
+  margin:24px auto 12px;
   text-align:center;
-  margin:4px auto 18px;
-  color:#744139;
+  color:var(--deep);
 }
-.date-label{
+.countdown-date span{
+  display:inline-block;
+  padding:10px 18px 9px;
+  border-top:1px solid rgba(155,109,114,.42);
+  border-bottom:1px solid rgba(155,109,114,.42);
   font-family:Georgia,"Times New Roman",serif;
-  font-size:11px;
-  letter-spacing:.25em;
-  opacity:.72;
-  margin-bottom:5px;
-}
-.date-main{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(18px,4.5vw,24px);
-  letter-spacing:.16em;
+  font-size:clamp(14px,3.5vw,19px);
   font-weight:600;
+  letter-spacing:.22em;
 }
 
 </style>
@@ -283,10 +275,8 @@ main > section + section{
       <div class="small">Save the date</div>
       <h2>Our Day</h2>
       <p>We would be delighted to have you with us as we begin this beautiful new chapter.</p>
-      <div class="event-date-near-countdown">
-  <div class="date-label">OUR DAY</div>
-  <div class="date-main">23 AUGUST 2026</div>
-</div><div class="countdown" aria-label="Countdown">
+      <div class="countdown-date"><span>23 AUGUST 2026</span></div>
+      <div class="countdown" aria-label="Countdown">
         <div class="timebox"><b id="days">0</b><span>Days</span></div>
         <div class="timebox"><b id="hours">0</b><span>Hours</span></div>
         <div class="timebox"><b id="minutes">0</b><span>Minutes</span></div>
