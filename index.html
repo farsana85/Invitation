@@ -194,35 +194,52 @@ footer{text-align:center;padding:65px 20px 85px;color:var(--muted)}
 }
 
 
-/* Whole invitation aesthetic */
+
+/* Soft blended floral treatment inspired by the first page */
 body{
-  background:linear-gradient(rgba(250,241,235,.90),rgba(250,241,235,.90)),
-             url("hero-background-clean.png") center top/cover fixed no-repeat;
-  background-color:#f7ebe3;
+  background:#f7ebe3;
 }
-main,section{background:transparent!important}
+main{
+  position:relative;
+  background:
+    linear-gradient(rgba(250,242,237,.24),rgba(250,242,237,.24)),
+    url("hero-background-clean.png") center top / cover fixed no-repeat;
+}
+main > section{
+  background:
+    linear-gradient(rgba(250,242,237,.18),rgba(250,242,237,.18)),
+    url("hero-background-clean.png") center top / cover no-repeat;
+  background-attachment:fixed;
+}
+main > section + section{
+  background-position:center center;
+}
 .card{
-  background:rgba(255,250,247,.76);
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
-  border-color:rgba(154,108,100,.16);
+  background:rgba(255,250,247,.70);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  border-color:rgba(154,108,100,.14);
 }
-.event-date-near-countdown{text-align:center;margin:4px auto 18px;color:#744139}
-.date-label{font-family:Georgia,"Times New Roman",serif;font-size:11px;letter-spacing:.25em;opacity:.72;margin-bottom:5px}
-.date-main{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,4.5vw,24px);letter-spacing:.16em;font-weight:600}
-.confirm-card{text-align:center}
-.confirm-copy{max-width:420px;margin:0 auto 20px}
-.primary-btn{border:0;border-radius:999px;padding:12px 22px;cursor:pointer;background:#8b5148;color:#fffaf7;box-shadow:0 8px 20px rgba(103,61,54,.15);font:inherit}
-.attendance-form{max-width:430px;margin:22px auto 0;text-align:left;padding-top:18px;border-top:1px solid rgba(139,81,72,.15)}
-.attendance-form label{display:block;margin:0 0 13px;font-family:Georgia,"Times New Roman",serif;color:#744139}
-.attendance-form input,.attendance-form select,.attendance-form textarea{width:100%;box-sizing:border-box;margin-top:6px;padding:11px 12px;border:1px solid rgba(139,81,72,.22);border-radius:12px;background:rgba(255,250,247,.86);color:#5f3933;font:inherit}
-.optional{opacity:.6;font-size:.85em}
 
 
-.embedded-rsvp{display:none;margin:24px auto 0;max-width:640px;border-top:1px solid rgba(139,81,72,.15);padding-top:18px}
-.embedded-rsvp.is-open{display:block}
-.embedded-rsvp iframe{width:100%;min-height:820px;border:0;border-radius:16px;background:rgba(255,250,247,.72)}
-.rsvp-divider{text-align:center;color:#b9786d;font-size:20px;margin-bottom:8px}
+.event-date-near-countdown{
+  text-align:center;
+  margin:4px auto 18px;
+  color:#744139;
+}
+.date-label{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:11px;
+  letter-spacing:.25em;
+  opacity:.72;
+  margin-bottom:5px;
+}
+.date-main{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(18px,4.5vw,24px);
+  letter-spacing:.16em;
+  font-weight:600;
+}
 
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -266,7 +283,10 @@ main,section{background:transparent!important}
       <div class="small">Save the date</div>
       <h2>Our Day</h2>
       <p>We would be delighted to have you with us as we begin this beautiful new chapter.</p>
-      <div class="countdown" aria-label="Countdown">
+      <div class="event-date-near-countdown">
+  <div class="date-label">OUR DAY</div>
+  <div class="date-main">23 AUGUST 2026</div>
+</div><div class="countdown" aria-label="Countdown">
         <div class="timebox"><b id="days">0</b><span>Days</span></div>
         <div class="timebox"><b id="hours">0</b><span>Hours</span></div>
         <div class="timebox"><b id="minutes">0</b><span>Minutes</span></div>
